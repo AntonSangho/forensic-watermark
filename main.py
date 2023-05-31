@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 img = cv2.imread('01.jpg')
 
 # plt.figure(figsize=(16, 10))
-# plt.imshow(img[:, :, ::-1])
-# plt.show()
+plt.imshow(img[:, :, ::-1])
+plt.show()
 
 # 워터마크로 사용할 이미지
-img_wm = cv2.imread('watermark_brad2.png')
+img_wm = cv2.imread('icons-python.png')
 
 # plt.imshow(img_wm[:, :, ::-1])
 # plt.show()
@@ -49,10 +49,10 @@ for y in range(wm_height):
     for x in range(wm_width):
         random_wm[y_random_indices[y], x_random_indices[x]] = img_wm[y, x]
 
-plt.figure(figsize=(16, 10))
-plt.imshow(random_wm)
-# input이미지와 같은 크기
-plt.show()
+# plt.figure(figsize=(16, 10))
+# plt.imshow(random_wm)
+# # input이미지와 같은 크기
+# plt.show()
 
 # input 이미지에 더해주기 
 alpha = 5
@@ -75,11 +75,11 @@ axes[1].imshow(result[:, :, ::-1])
 axes[1].set_title('Forensic watermarked')
 axes[1].axis('off')
 fig.tight_layout()
-plt.show()
+# plt.show()
 
-plt.figure(figsize=(16, 10))
-# 사람 눈으로 구분이 안가기 때문에, result를 이미지에 빼기를 할 때 차이가 있음 
-plt.imshow(result - img)
+# plt.figure(figsize=(16, 10))
+# # 사람 눈으로 구분이 안가기 때문에, result를 이미지에 빼기를 할 때 차이가 있음 
+# plt.imshow(result - img)
 
 # Decode 
 
@@ -95,8 +95,9 @@ watermark = (img_ori_f - img_input_f) / alpha
 # 실수로 변경하고 다시 이미지화 
 watermark = np.real(watermark).astype(np.uint8)
 
-plt.figure(figsize=(16, 10))
-plt.imshow(watermark)
+# plt.figure(figsize=(16, 10))
+# plt.imshow(watermark)
+# plt.show()
 
 y_random_indices, x_random_indices = list(range(height)), list(range(width))
 # 위에서 encode할 때와 똑같음. 
@@ -111,8 +112,9 @@ for y in range(height):
         result2[y, x] = watermark[y_random_indices[y], x_random_indices[x]]
 
 # 결과값에서 워터마크가 나옴, 불법 복제되었다는 의미 
-plt.figure(figsize=(16, 10))
-plt.imshow(result2)
+# plt.figure(figsize=(16, 10))
+# plt.imshow(result2)
+# plt.show()
 
 # Result
 fig, axes = plt.subplots(1, 3, figsize=(20, 16))
@@ -126,4 +128,4 @@ axes[2].imshow(result2)
 axes[2].set_title('Watermark')
 axes[2].axis('off')
 fig.tight_layout()
-plt.show()
+# plt.show()
